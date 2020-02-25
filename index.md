@@ -1,4 +1,4 @@
-# Supercondncting Quantum Devices (SQD) Lab    
+# Superconducting Quantum Devices (SQD) Lab    
 
 This is the official github page for SQD lab. All the current projects and documentation will be hosted here.
     
