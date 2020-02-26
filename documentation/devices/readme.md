@@ -8,3 +8,4 @@ Documentation listed here for devices contain introductory information and pytho
 
 * [AWG Agilent N8241A](./agilent_n8241a.md)
 * [DG 645](./dg645.md)
+* [SGS100A](./rf_src_sgs100a.md)
