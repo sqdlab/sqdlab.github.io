@@ -28,7 +28,7 @@ low | (default: -1)
 high | (default: 1)
 seperation | (time between 2 consecutive pulses) (seconds)   
 
-Optionals:      
+Optionals (Only works when channel parameter "optimal control" is True):      
 
 Parameters | Additional Info
 -----------|----------------
