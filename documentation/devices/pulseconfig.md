@@ -28,7 +28,8 @@ low | (default: -1)
 high | (default: 1)
 seperation | (time between 2 consecutive pulses) (seconds)   
 
-Optionals:   
+Optionals:      
+
 Parameters | Additional Info
 -----------|----------------
 sampling_rate_multiplier | (default: 10)
