@@ -32,9 +32,9 @@ Optionals:
 
 Parameters | Additional Info
 -----------|----------------
-sampling_rate_multiplier | (default: 10)
-prepend |
-append |
+sampling_rate_multiplier | (default: 10) (The scaling between the sampling rate of vector `x` and vector `y`. The wanted pulse shape `y` at the output of the linear device is sampled with a higher sampling rate to receive more accurate fits.)   
+prepend | (The pulse is zero padded before the pulse for `prepend` seconds.)
+append | (The pulse is zero padded after the pulse for `append` seconds.)
 use_pinv | (pseudo-inverse) (bool)
 ir_tlim | (start and stop time of impulse reponse used for matrix inversion)
     
