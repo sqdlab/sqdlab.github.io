@@ -148,3 +148,15 @@ pc.add_awg(awg, 'Agilent_N824x', 1.25e9)
 # get AWG
 pc.get_awgs()
 ```
+
+**NOTE** Please read additional info (at the end) about how it is being used in existing software stack, in  you want to modify or it.
+___
+## Additional Information:    
+    
+Few points to keep in consideration ,while understanding the working of this module with the rest of the software stack:
+    
+* Pulseconfig is ONLY used for generating and keeping pulse configuration. It was meant to be a upgrade to ```pulsegen``` module, _with which it interfaces internally_, to generate the pulse configuration.  
+
+* It does NOT drive the AWGs, that is done by _UQ tools_ library's ```programAWG``` function written in ```AWG`` module.
+
+* The information passed to object of this library are: 1. Pulse Configuration, 2. AWG., both which are later on passed to ```TimingConfig``` modules, which internally passes the information to ```AWG``` module for triggering of AWG, with given pulsen configuration.
