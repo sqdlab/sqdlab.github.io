@@ -3,6 +3,15 @@
 This is **NOT** a real instrument, but is treated as virtual instrument (added as one in qcodes). This is used to describe various parameters of the microwave pulse.   
 
 ___
+## Creating object:
+
+It **requires** a pulse delay generator (DG645, aka ```pulser```) object, PulseConfig object (```pc```) and FPGA object ```fpga```.   
+
+```python
+from qcodes.instrument_drivers.sqdlab.PulseConfig import PulseConfig
+pulse_config = pc = PulseConfig('pulse_config')
+```
+___
 ## Information & Parameters:    
 
 There are 3 key componenet (classes) for whose parameters can configured:   
@@ -12,6 +21,8 @@ There are 3 key componenet (classes) for whose parameters can configured:
 * ChannelPair
 
 Additionally, storing info about AWG is also done within the main class.   
+
+**NOTE** Please read additional info (at the end) about how it is being used in existing software stack, in  you want to modify or it.
 
 ___
 ## Following are the list of paramters that can be set for each components:   
@@ -41,8 +52,6 @@ ir_tlim | (start and stop time of impulse reponse used for matrix inversion)
 The above mentioned paramters can be directly set. For eg:
 
 ```python
-from qcodes.instrument_drivers.sqdlab.PulseConfig import PulseConfig
-pulse_config = pc = PulseConfig('pulse_config')
 
 pc.pattern_length(10.1e-6)
 pc.fixed_point(10e-6)
@@ -149,7 +158,6 @@ pc.add_awg(awg, 'Agilent_N824x', 1.25e9)
 pc.get_awgs()
 ```
 
-**NOTE** Please read additional info (at the end) about how it is being used in existing software stack, in  you want to modify or it.
 ___
 ## Additional Information:    
     
