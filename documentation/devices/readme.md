@@ -11,3 +11,4 @@ Documentation listed here for devices contain introductory information and pytho
 * [SGS100A](./rf_src_sgs100a.md)
 * [PulseConfig](./pulseconfig.md)   
 * [Timing Config](./timingconfig.md)
+* [M4iprocessorGPU](./m4iprocessorgpu.md)
