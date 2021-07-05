@@ -10,7 +10,7 @@ SQDToolz is an instrument control and data processing software stack written in 
 ## Documentations:
 
 > For those who want to quickly start with the software stack without going into deep details about the control and data flow, please use:   
-* **[User Documentation](https://github.com/sqdlab/sqdtoolz/wiki/User-Documentation)**.  
+* **[User Documentation](./user/readme.md)**.  
 
 > For those who want to understand the inner working, design choices and drive development and compatibility please use:   
 * **[Developer documentation](https://github.com/sqdlab/sqdtoolz/wiki/Developer-Documentation)**.
