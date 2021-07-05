@@ -1,6 +1,6 @@
 # Stack Overview
 
-This document presents all the layers  and elements of SQDToolz, and explain the design philosophy behind them. **It is important** to read this document to get an idea of how to use these different layers/ elements of stack correctly. **NOT using them in this way can lead to unexpected bugs and behavior!!**, not support is available for this.
+This document presents all the layers  and elements of SQDToolz, and explain the design philosophy behind them. **It is important** to read this document to get an idea of how to use these different layers/ elements of stack correctly. **NOT using them in this way can lead to unexpected bugs and behavior!!**, no support is available for this.
    
    
 ___
@@ -8,14 +8,17 @@ ___
    
 The is divided into 2 key layers:
 
-1. HAL (Hardware abstraction layer).
-2. RL (Runtime layer).
-3. IL (Interface layer).
+1. **HAL (Hardware abstraction layer)**
+   * Qcodes wrapper, and RL linking.
+2. **RL (Runtime layer)**
+   * VARs, SPECs.
+3. **IL (Interface layer)**
+   * Experiment, Experiment Config.
 
 Following are the elements and use case for each layer:   
 
 ___
-### HAL (Hardware abstraction layer)
+## HAL (Hardware abstraction layer)
 
 This layer had 2 purpose:
 
@@ -24,16 +27,53 @@ Previously, bug fixing in qcodes driver has lead to command syntax changes, maki
    
 * **Device abstraction:**.   
 Jupyter notebook should not be directly dependent on the device or rack being used. This layer makes it possible to "rack/device" independent.   
+   
+Steps to creating a HAL object:
 
+1. _Load Qcodes driver using RL object_. This is done by running the ```load_instrument()``` function of the RL object.
+2. _Use package object to create a HAL type object and link it to RL object and it's qcodes driver_. This is done by ```<pkg_obj>.<hal_type>(<hal_obj_name>,<rl_obj>,<qcodes_name>,<additional_params>)```. While linking, the HAL will register itself as an \"active\" instrument.
+* 
 **NOTE:** Currently, this is a **wrapper around qcodes driver**. This is **only** part of the stack which dependency on qcodes library, so if you see an qcodes related error, it must have originated here. 
     
 ____
-### RL (Runtime Layer)  
+## RL (Runtime Layer)  
 
 This layer is the main component being used when performing different experiments. This layer has the following functionality:
 
 * HAL objects storage.
 * File I/o of data.
-* experiment parameters storage.
+* Experiment parameters storage (SPEC and VAR).
 
-* **
+File saving directory is passed as an argument when creating the RL object. The HAL object storage at the beginning **only once**.   
+
+Experiment parameters are the most important part of this layer, as they are the container that hold various type of information and data _between_ different experiment. Following are the 2 type of RL containers:
+
+1. VAR
+2. SPEC
+   
+**NOTE:** Their functionality looks very similar on the surface, but their' way intended way of usage _is very different_. Using them in improper manner can lead to data loss, data inconsistency or other unexpected behavior.   
+   
+___
+### VARs (Variable property):
+
+Instead of changing HAL parameters direclty, they should be linked to VARs, and these VARs should be ajusted **before** executing the experiment.
+How to use these elements:
+
+* Created ones.
+* Set, get or swept.
+* Use over differnet experiments and experiment configurations.
+
+These are placeholder which _may or may NOT_ belong to HAL object parameter. Ideally, you can create and add custom variable parameters or use existing ones. For example:
+
+* **Combine HAL object parameters**, to adjust in a particular way.    
+Eg, "VariableSpaced" take cavity src and down conversion src, along with the offset "25MHz" to automatically keep them them 25MHz off from each other.
+   
+**NOTE** the following for HAL object related VARs:
+
+* They only retain the last value set to them **during the runtime**. This means, in a sweep, whatever is the last value of sweep is kept. 
+* In a **chained experiments**, if the previous experiment updates a values, that is maintained, **the value you set will be lost!!**.
+    
+____
+### SPECs (Specifications):
+
+These can be thought of as "mini scratchpad" which can save all relevant information for given experiment and parameters of HAL objects in one entity (key\-pair value).
