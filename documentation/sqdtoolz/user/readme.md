@@ -7,6 +7,6 @@ ___
 
 Following is outline of this document:   
 
-* [Stack Overview](https://github.com/sqdlab/sqdtoolz/wiki/User-Documentation#stack-overview)
+* [Stack Overview](./overview.md)
 * [Quick start](https://github.com/sqdlab/sqdtoolz/wiki/User-Documentation#quick-start)
 * [Creating Experiment Config](https://github.com/sqdlab/sqdtoolz/wiki/User-Documentation#creating-experiment-config)
