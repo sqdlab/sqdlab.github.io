@@ -145,4 +145,4 @@ This can be thought of as an intelligent Experiment config mamnger. It uses the 
    
 ___
 
-This completed the Design and Use Philosophy of the entire stack.
+This completes the Design and Use Philosophy of the entire stack.
