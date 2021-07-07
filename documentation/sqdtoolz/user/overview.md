@@ -32,7 +32,7 @@ Steps to creating a HAL object:
 
 1. _Load Qcodes driver using RL object_. This is done by running the ```load_instrument()``` function of the RL object.
 2. _Use package object to create a HAL type object and link it to RL object and it's qcodes driver_. This is done by ```<pkg_obj>.<hal_type>(<hal_obj_name>,<rl_obj>,<qcodes_name>,<additional_params>)```. While linking, the HAL will register itself as an \"active\" instrument.
-* 
+   
 **NOTE:** Currently, this is a **wrapper around qcodes driver**. This is **only** part of the stack which dependency on qcodes library, so if you see an qcodes related error, it must have originated here. 
     
 ____
