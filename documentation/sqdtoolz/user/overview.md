@@ -77,20 +77,34 @@ Eg, "VariableSpaced" take cavity src and down conversion src, along with the off
 ____
 ### SPECs (Specifications):
 
-These can be thought of as "tempelate" or "collection" of information and parameters relevant to ths given experiment, or obtained after running the experiment or after processing the data obtained from it.
+These can be thought of as "tempelate" or "collection" of information and parameters relevant to ths given experiment, or obtained after running the experiment or after processing the data obtained from it. Additionally it provide a certain level of **automation, using the JSON templates.**
 
 General usage:
 
-* Created ones on the fly **or** .
+* Created on the fly **or** using JSON scripts.
 * Assign values, at execution time, or post processing.
 * Use over different experiment and experiment config.
      
 Additionally, they have the following features:   
 
 * Saved in JSON file, readable via notepad.
+* Same JSON file can be used to initialize different specification.
+* JSON file based initializations CAN be edited on the fly and words with advance features like ```load_last_config()```.
 * Linked to HAL object properties via "destination" argument.
    
-Using advanced features reloading last configuration, also loads these paramteres.
+Example: Creating base.json
+
+Consider a case of Cavity and qubit spectroscopy. From each of them we obtain a frequency, power and decay time. You can have JSON with name "base" in the ```sqdtoolz/sqdtoolz/ExperimentSpecifications/``` folder as follows
+
+```
+{
+   "Frequency" : 5e9,
+   "Power" : -30,
+   "decay time": 1
+}
+```
+
+This JSON file can be used to create SPEC('Qubit') and SPEC('cavity'), in which later more parameters can be added specific to their own details. At the time of creation of SPECs, all the paramters mentioned in the JSON as automatically created and loaded with deafault values mentioned in the JSON file.
    
 ___
 ## IL (Interface layer).  
@@ -102,11 +116,33 @@ This layer where the runtime parameters are actually executed, that is, the prog
 
 Following are the functions of each component in detail:
    
-___
+
 ### Experiment Configuration:   
 
+This takes the following inputs:
 
+* Configuration name
+* lab object
+* repetition time
+* HAL objects
+* VARs
+* SPECs
+* Processor
    
+Basically it acts as a giant container for all the details relevant to the experiment it will be run in. Essentially, it contains functions for controlling insturments, **HOWEVER** these are not called by the user, everything inside it is automated!   
    
 
+### Experiment:
 
+This can be thought of as an intelligent Experiment config mamnger. It uses the built-in functions in a particular way ( as defined by the user) to:
+
+* perpare instrument.
+* save data
+* perform sweeps
+* automatically turn insturments ON \& OFF acting like a smart context manager.
+   
+**Creation:** These are supposed to be created by the user, when some particular insturments are handle in a specific way to get data, and for this sequence **no** other experiemnt exists.
+   
+___
+
+This completed the Design and Use Philosophy of the entire stack.
