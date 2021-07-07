@@ -56,8 +56,9 @@ Experiment parameters are the most important part of this layer, as they are the
 ___
 ### VARs (Variable property):
 
-Instead of changing HAL parameters direclty, they should be linked to VARs, and these VARs should be ajusted **before** executing the experiment.
-How to use these elements:
+Instead of changing HAL parameters direclty, they should be linked to VARs, and these **VARs should be ajusted** instead of direct changes to HAL parameters with tuning the them _before_ running the experiment.   
+
+General Usage:
 
 * Created ones.
 * Set, get or swept.
@@ -76,4 +77,9 @@ Eg, "VariableSpaced" take cavity src and down conversion src, along with the off
 ____
 ### SPECs (Specifications):
 
-These can be thought of as "mini scratchpad" which can save all relevant information for given experiment and parameters of HAL objects in one entity (key\-pair value).
+These can be thought of as "mini scratchpad" or "collection" of information and parameters relevant to ths given experiment, or obtained after running the experiment or after processing the data obtained from it.
+
+General usage:
+
+* Created ones.
+* Assiged multiple values, as the experiment proceeds
