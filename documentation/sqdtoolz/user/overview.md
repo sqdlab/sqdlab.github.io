@@ -136,7 +136,7 @@ Basically it acts as a giant container for all the details relevant to the exper
 
 This can be thought of as an intelligent Experiment config mamnger. It uses the built-in functions in a particular way ( as defined by the user) to:
 
-* perpare instrument.
+* prepare instrument.
 * save data
 * perform sweeps
 * automatically turn insturments ON \& OFF acting like a smart context manager.
