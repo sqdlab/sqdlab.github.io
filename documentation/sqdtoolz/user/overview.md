@@ -77,9 +77,36 @@ Eg, "VariableSpaced" take cavity src and down conversion src, along with the off
 ____
 ### SPECs (Specifications):
 
-These can be thought of as "mini scratchpad" or "collection" of information and parameters relevant to ths given experiment, or obtained after running the experiment or after processing the data obtained from it.
+These can be thought of as "tempelate" or "collection" of information and parameters relevant to ths given experiment, or obtained after running the experiment or after processing the data obtained from it.
 
 General usage:
 
-* Created ones.
-* Assiged multiple values, as the experiment proceeds
+* Created ones on the fly **or** .
+* Assign values, at execution time, or post processing.
+* Use over different experiment and experiment config.
+     
+Additionally, they have the following features:   
+
+* Saved in JSON file, readable via notepad.
+* Linked to HAL object properties via "destination" argument.
+   
+Using advanced features reloading last configuration, also loads these paramteres.
+   
+___
+## IL (Interface layer).  
+
+This layer where the runtime parameters are actually executed, that is, the programming of the instruments, timing checks, data collection and data processing (depending upon the experiment object), takes place in this layer. This comprises of the following 2 key elements (classes):
+
+1. Experiment Configuration.
+2. Experiment.
+
+Following are the functions of each component in detail:
+   
+___
+### Experiment Configuration:   
+
+
+   
+   
+
+
