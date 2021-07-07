@@ -116,7 +116,7 @@ This layer where the runtime parameters are actually executed, that is, the prog
 
 Following are the functions of each component in detail:
    
-
+___
 ### Experiment Configuration:   
 
 This takes the following inputs:
@@ -131,7 +131,7 @@ This takes the following inputs:
    
 Basically it acts as a giant container for all the details relevant to the experiment it will be run in. Essentially, it contains functions for controlling insturments, **HOWEVER** these are not called by the user, everything inside it is automated!   
    
-
+___
 ### Experiment:
 
 This can be thought of as an intelligent Experiment config mamnger. It uses the built-in functions in a particular way ( as defined by the user) to:
