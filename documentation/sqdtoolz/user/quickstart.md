@@ -1,10 +1,15 @@
 # QuickStart Guide
    
-**Please read [Overview](./overview) and [Glossary](./glossary.md) before starting this guide.**.  
+**Please read [Overview](./overview.md) and [Glossary](./glossary.md) before starting this guide.**.  
 
+This guide is divided into 2 parts, both are required to be read inorder to run an experiment with total control.
 
-Following are the steps along with general syntax and exmaple code on how to work with this stack:   
-
+* **PART A:** Provides general syntax and examples of object mentioned in [Overview](./overview).
+* **PART B:** Provides general synatex and examples of [Processor](./hals.md) and [Waveform customization]().
+   
+___
+# PART A
+  
 ## 1.Imports and creating Lab object
    
 #### A.Import and create package object:
@@ -69,3 +74,73 @@ lab.HAL('DDG').get_trigger_output('AB').TrigPulseLength = 10e-9
 lab.HAL('DDG').get_trigger_output('AB').TrigPolarity = 1
 lab.HAL('DDG').get_trigger_output('AB').TrigPulseDelay = 0.0e-9
 ```
+   
+## Creating and using VARs:
+   
+#### A. Create VARs using package object and register to Lab:
+General syntax:
+```python
+<pkg_obj>.<variable_type>('var_name', <lab_obj>, <additional arugments>)
+```
+   
+Example:
+```python
+stz.VariableProperty('MWFreq', lab, lab.HAL("MW_cav"), 'Frequency')
+stz.VariableProperty('MWDownConv', lab, lab.HAL("MW_dnc"), 'Frequency')
+stz.VariableSpaced('CavityFreq', lab, 'MWFreq', 'MWDownConv', 25e6)
+```
+
+#### B. Using VARs to set HAL object parameters:
+General syntax:
+```python
+<lab_obj>.VAR('<var_name>').Value = <<value>>
+```
+   
+Example:
+```python
+lab.VAR('CavityFreq').Value = 7636827765.17
+```
+
+## Creating and Using SPECs:
+
+#### A1. Creating SPEC using JSON:
+General Syntax:
+```python
+<pkg_obj>.ExperimentSpecification('<spec_name>', <lab_obj>, '<JSON_name>')
+```
+
+Example:
+```python
+stz.ExperimentSpecification('CavitySpec', lab, 'Cavity')
+```
+
+#### A2. Creating SPEC _WITHOUT_ JSON:
+General Syntax:
+```python
+<pkg_obj>.ExperimentSpecification('<spec_name>', <lab_obj>)
+```
+
+Example:
+```python
+stz.ExperimentSpecification('cav2d',lab)
+```
+
+#### B1. Using SPEC to bind to destination:
+   
+The destination can be anything; a var, hal, waveform or any other **object property** registered with lab object.   
+   
+General Syntax:
+```python
+<lab_obj>.SPEC('<spec_name>').set_destination('<parameter_name>', <VAR/HAL/WAVeform_obj>)
+```
+   
+Example:
+```python
+lab.SPEC('Cavity').set_destination('Frequency', lab.VAR('CavityFreq'))
+lab.SPEC('Cavity').set_destination('Power', lab.HAL("MW_cav"), 'Power')
+lab.SPEC('Cavity')['Power'].Value = -30
+```
+
+## Creating an Experiment Config
+General Syntax:
+```python
