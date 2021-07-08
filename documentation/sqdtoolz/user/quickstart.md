@@ -10,7 +10,7 @@ This guide is divided into 2 parts, both are required to be read inorder to run 
 ___
 # PART A
   
-## 1.Imports and creating Lab object
+## Imports and creating Lab object
    
 #### A.Import and create package object:
 General syntax:   
