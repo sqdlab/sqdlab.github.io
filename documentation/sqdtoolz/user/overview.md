@@ -117,7 +117,7 @@ This layer where the runtime parameters are actually executed, that is, the prog
 Following are the functions of each component in detail:
    
 ___
-### Experiment Configuration:   
+### Experiment Configuration (EC):   
 
 This takes the following inputs:
 
@@ -129,17 +129,17 @@ This takes the following inputs:
 * SPECs
 * Processor
    
-Basically it acts as a giant container for all the details relevant to the experiment it will be run in. Essentially, it contains functions for controlling insturments, **HOWEVER** these are not called by the user, everything inside it is automated!   
+Basically it acts as a giant container for all the details relevant to the experiment it will be run in. Essentially, it contains functions for manipulating instruments which are _called by the experiment_.
    
 ___
 ### Experiment:
 
-This can be thought of as an intelligent Experiment config mamnger. It uses the built-in functions in a particular way ( as defined by the user) to:
+This can be thought of as an intelligent manager of Experiment Config. It uses the EC's built-in functions in a particular way ( as defined by the user) to:
 
 * prepare instrument.
 * save data
 * perform sweeps
-* automatically turn insturments ON \& OFF acting like a smart context manager.
+* automatically turn insturments ON \& OFF acting like a _smart context manager_.
    
 **Creation:** These are supposed to be created by the user, when some particular insturments are handle in a specific way to get data, and for this sequence **no** other experiemnt exists.
    
