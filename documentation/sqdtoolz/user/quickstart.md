@@ -2,7 +2,7 @@
    
 **Please read [Overview](./overview.md) and [Glossary](./glossary.md) before starting this guide.**.  
 
-This guide is divided into 2 parts, both are required to be read inorder to run an experiment with total control.
+This guide is divided into 2 parts, both are required to be read inorder to perform an experiment.
 
 * **PART A:** Provides general syntax and examples of object mentioned in [Overview](./overview).
 * **PART B:** Provides general synatex and examples of [Processor](./hals.md) and [Waveform customization]().
