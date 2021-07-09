@@ -6,15 +6,21 @@ This document presents all the layers  and elements of SQDToolz, and explain the
 ___
 ## Layers:
    
-The is divided into 2 key layers:
+The is divided into 3 key layers:
 
+0. **Lab (Laboratory)**.
 1. **HAL (Hardware abstraction layer)**
    * Qcodes wrapper, and RL linking.
 2. **RL (Runtime layer)**
    * VARs, SPECs.
 3. **IL (Interface layer)**
    * Experiment, Experiment Config.
+   
+___
+## Lab (Laboratory):   
 
+Note that above mentioned components do not have strong inter-dependency, making it easier to debug. But for the layers to function together, a "supervisor" is required. This is called as **Laboratory or (Lab)** in the stack. In stack, it does **not** implements any types of checks, but _is responsible for holding all elements on above mentioned layers for the entire jupyter notebook_.
+   
 Following are the elements and use case for each layer:   
 
 ___
