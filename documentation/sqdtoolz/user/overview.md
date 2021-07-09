@@ -56,7 +56,7 @@ Experiment parameters are the most important part of this layer, as they are the
 ___
 ### VARs (Variable property):
 
-Instead of changing HAL parameters direclty, they should be linked to VARs, and these **VARs should be ajusted** instead of direct changes to HAL parameters with tuning the them _before_ running the experiment.   
+Instead of changing HAL parameters in loop or during runtime, we make VAR for it. These are then passed to ```run()``` function of lab object, which sets or sweep over them when actually "running" the experiment.   
 
 General Usage:
 
@@ -64,7 +64,7 @@ General Usage:
 * Set, get or swept.
 * Use over differnet experiments and experiment configurations.
 
-These are placeholder which _may or may NOT_ belong to HAL object parameter. Ideally, you can create and add custom variable parameters or use existing ones. For example:
+These are **temporary** placeholder which _may or may NOT_ belong to HAL object parameter. Ideally, you can create and add custom variable parameters or use existing ones. For example:
 
 * **Combine HAL object parameters**, to adjust in a particular way.    
 Eg, "VariableSpaced" take cavity src and down conversion src, along with the offset "25MHz" to automatically keep them them 25MHz off from each other.
@@ -106,6 +106,15 @@ Consider a case of Cavity and qubit spectroscopy. From each of them we obtain a 
 
 This JSON file can be used to create SPEC('Qubit') and SPEC('cavity'), in which later more parameters can be added specific to their own details. At the time of creation of SPECs, all the paramters mentioned in the JSON as automatically created and loaded with deafault values mentioned in the JSON file.
    
+___
+## VARs vs SPECs:
+
+| VARs |SPECs |
+| -----|----- |
+| * Passed to ``run()``` function of lab object. | * Passed to ExperimentConfiguration. |
+| * Does not retain value during running the experiment | * Retains value during running the experiemnt. |
+| * NO automation, created on the fly only | * JSON automated and created on the fly also. |
+
 ___
 ## IL (Interface layer).  
 
