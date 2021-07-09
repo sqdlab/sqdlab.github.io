@@ -58,6 +58,11 @@ ___
 
 Instead of changing HAL parameters in loop or during runtime, we make VAR for it. These are then passed to ```run()``` function of lab object, which sets or sweep over them when actually "running" the experiment.   
 
+General structure:
+```
+('name':'value = HAL parameter')
+```
+   
 General Usage:
 
 * Created ones.
@@ -79,6 +84,11 @@ ____
 
 These can be thought of as "tempelate" or "collection" of information and parameters relevant to ths given experiment, or obtained after running the experiment or after processing the data obtained from it. Additionally it provide a certain level of **automation, using the JSON templates.**
 
+General structure:
+```
+('key':'value',+(optional:target))
+```
+   
 General usage:
 
 * Created on the fly **or** using JSON scripts.
@@ -111,9 +121,10 @@ ___
 
 | VARs |SPECs |
 | -----|----- |
+| * Structure | * Structure |
 | * Passed to ``run()``` function of lab object. | * Passed to ExperimentConfiguration. |
-| * Does not retain value during running the experiment | * Retains value during running the experiemnt. |
-| * NO automation, created on the fly only | * JSON automated and created on the fly also. |
+| * Change value during runtime | * Retains "value" for given "key". |
+| * Created on the fly only | * JSON automated or can be created on the fly. |
 
 ___
 ## IL (Interface layer).  
