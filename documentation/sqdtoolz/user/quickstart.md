@@ -131,7 +131,7 @@ The destination can be anything; a var, hal, waveform or any other **object prop
    
 General Syntax:
 ```python
-<lab_obj>.SPEC('<spec_name>').set_destination('<parameter_name>', <VAR/HAL/WAVeform_obj>)
+<lab_obj>.SPEC('<spec_name>').set_destination('<SPEC's_parameter_name>', <lab_obj>.<VAR/HAL/WAVeform_name>, <VAR/HAL/WAVeform's_parameter_name>)
 ```
    
 Example:
@@ -140,7 +140,12 @@ lab.SPEC('Cavity').set_destination('Frequency', lab.VAR('CavityFreq'))
 lab.SPEC('Cavity').set_destination('Power', lab.HAL("MW_cav"), 'Power')
 lab.SPEC('Cavity')['Power'].Value = -30
 ```
-
+     
+## Creating and adding waveforms in (PART B)
+   
+## Creating and binding Processor in (PART B)
+   
 ## Creating an Experiment Config
 General Syntax:
 ```python
+<pkg_obj>.ExperimentConfiguration('<Config name>', <lab_obj>, <repetition_time>, [ <list of HAL names> ], <ACQ HAL>, 
