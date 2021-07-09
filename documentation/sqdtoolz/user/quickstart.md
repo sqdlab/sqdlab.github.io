@@ -63,7 +63,7 @@ stz.DDG("DDG", lab, 'pulser')
 #### C. Set HAL object parameters (OPTIONAL):
 General Syntax:
 ```python
-<lab_obj>.HAL('<hal name>').<property_function>().parameter = <<value>>     
+<lab_obj>.HAL('<hal name>').<sub_obj_function>().parameter = <<value>>     
 # or
 <lab_obj>.HAL('<hal name>').parameter = <<value>>
 ```
@@ -71,8 +71,7 @@ General Syntax:
 Example:
 ```python
 lab.HAL('DDG').get_trigger_output('AB').TrigPulseLength = 10e-9
-lab.HAL('DDG').get_trigger_output('AB').TrigPolarity = 1
-lab.HAL('DDG').get_trigger_output('AB').TrigPulseDelay = 0.0e-9
+lab.HAL('sw_radial_rt').Position = 'P2'
 ```
    
 ## 3.Creating and using VARs:
