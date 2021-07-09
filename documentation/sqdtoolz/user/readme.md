@@ -8,5 +8,7 @@ ___
 Following is outline of this document:   
 
 * [Stack Overview](./overview.md)
-* [Quick start](https://github.com/sqdlab/sqdtoolz/wiki/User-Documentation#quick-start)
-* [Creating Experiment Config](https://github.com/sqdlab/sqdtoolz/wiki/User-Documentation#creating-experiment-config)
+* [Quick start](./quickstart.md)
+* [HALs](./hals.md)
+* [Programming AWG](./waveforms.md)
+* [Creating New Experiments](./creatingExperiments.md)
