@@ -10,9 +10,12 @@ This is HAL type for data acqusition devices. For SQDLab, currently there are 3 
 For using any of these device, 2 key components are required:
 
 1. Qcodes driver through YAML.   
-2. Processor.   
-
-This hal provides the following parameters:
+2. [Processor](./proessors.md).   
+   
+In addition to these, a trigger source is generally needs to be set, which **must** be a trigger type object.
+    
+This hal provides the following parameters:   
+>Note that parameters heading containing (!) sign, must be only tampered with after complete understanding of the stack. Imporper setting of these variable can cause unexpected behavior, which is NOT a bug.
    
 ___
 ## List of Parameters :
@@ -48,21 +51,24 @@ lab.HAL("DigiC").InputTriggerEdge = 1 #positive
 ```
 
 ### Set Processor:
-Set the data processing device of type [Processor]() to be used.   
+Set the data processing device of type [Processor](./processors.md) to be used.   
 ```python
 lab.HAL("DigiC").set_data_processor(myProc)
 ```
    
 ### Get Data(!):
-Get _processed_ data from the device. **NOT recommended to call this function**  
+Get _processed_ data from the device if a processor is present, else it returns _raw_ data. **NOT recommended to call this function**  
 ```python
 lab.HAL("DigiC").get_data()
 ```
    
 ### Trigger Source:
-Set or get the device that is responsible for trigger the acqusition device.   
+Set or get the device that is responsible for trigger the acqusition device. **NOTE: Input requires a [trigger type object]().**   
 ```python
 lab.HAL("DigiC").set_trigger_source(<Trigger_Object>)
 lab.HAL("DigiC").get_trigger_source()
 ```
    
+___
+
+This completes all the functions and paramters availble as public variables. Next step is to read about [Processors](./processors.md)
