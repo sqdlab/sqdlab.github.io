@@ -7,7 +7,7 @@ This is HAL type for data acqusition devices. For SQDLab, currently there are 3 
 3. Tabor Digitizer (Digitizer).
 4. VNA
 
-For using any of 2 key compoenet are required:
+For using any of these device, 2 key components are required:
 
 1. Qcodes driver through YAML.   
 2. Processor.   
@@ -47,4 +47,15 @@ Set if the device should be trigger at the rising edge or falling edge. **NOT re
 lab.HAL("DigiC").InputTriggerEdge = 1 #positive
 ```
 
-### 
+### Set Processor:
+Set the data processing device of type [Processor]() to be used.   
+```python
+lab.HAL("DigiC").set_data_processor(myProc)
+```
+   
+### Get Data(!):
+Get _processed_ data from the device. **NOT recommended to call this function**  
+```python
+lab.HAL("DigiC").get_data()
+```
+
