@@ -58,4 +58,11 @@ Get _processed_ data from the device. **NOT recommended to call this function**
 ```python
 lab.HAL("DigiC").get_data()
 ```
-
+   
+### Trigger Source:
+Set or get the device that is responsible for trigger the acqusition device.   
+```python
+lab.HAL("DigiC").set_trigger_source(<Trigger_Object>)
+lab.HAL("DigiC").get_trigger_source()
+```
+   
