@@ -38,6 +38,8 @@ lab = stz.Laboratory(instr_config_file = "eth_test2.yaml", save_dir = "Z:\\Data\
 
 ## 2.Creating \& initialising HAL objects
 
+**NOTE: To know more about different type of HALs & their customisations read [HAL section](./hals.md)**.
+   
 #### A. Load instruments from YAML using lab object:
 General Syntax:
 ```python
@@ -196,9 +198,47 @@ leData = lab.run_single(new_exp)
 ___
 # PART B
 
+This is advanced section because it assumes you have some basic knowledge of stack and have read the HAL types and other details.    
 
+## 5.Creating and binding Processor
+     
+**NOTE: For more customization please read [Processor Section](./misc/PROCdocs.md)**
+    
+#### A. Create Processor object:
+General Syntax (NOTE: CPU can be replaced by GPU)
+```python
+<proc_obj> = <pkg_obj>.ProcessorCPU('<proc_name>', <lab_obj>)
+```
+   
+Example:
+```python
+myProc = stz.ProcessorCPU('ddcInteg', lab)
+```
+   
+#### B. Binding Processor to ACQ HAL:
+General Syntax:
+```python
+<lab_obj>.HAL('<ACQ_obj_name>').et_data_processor(<<proc_obj>)
+```
+   
+Example:
+```python
+lab.HAL("DigiC").set_data_processor(myProc)
+```
+   
+## 6.Creating and adding waveforms
 
+**NOTE: To know more about different type of waveforms & their customisations read [WaveformAWG section]()**.
 
-
+#### A. Creating AWGwaveform object:
+General Syntax:
+```python
+<pkg_obj>.WaveformAWG("<AWG_obj_name>", <lab_obj>, [ ('<AWG_YAML_name>', 'ch<channel_number>'), (<similar tuple for more channels/AWG>) ], <sampling_rate>, <repetition_time>)
+```
+   
+Example:
+```python
+stz.WaveformAWG("WfmCon", lab, [('Agi1', 'ch1'), ('Agi1', 'ch2')], 1.25e9, total_time = 1024e-9)
+```
 
 
