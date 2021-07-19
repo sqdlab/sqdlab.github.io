@@ -216,7 +216,7 @@ myProc = stz.ProcessorCPU('ddcInteg', lab)
 ```
    
 #### B. Reset pipeline & Add processing stage:
-This section require user to read [Processor subsection](./misc/PROCdocs.md) in miscellaeous section.
+This section require user to read [Processor Section](./misc/PROCdocs.md) in miscellaeous section.
    
 #### C. Binding Processor to ACQ HAL:
 General Syntax:
