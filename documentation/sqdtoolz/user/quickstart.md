@@ -215,10 +215,13 @@ Example:
 myProc = stz.ProcessorCPU('ddcInteg', lab)
 ```
    
-#### B. Binding Processor to ACQ HAL:
+#### B. Reset pipeline & Add processing stage:
+This section require user to read [Processor subsection](./misc/PROCdocs.md) in miscellaeous section.
+   
+#### C. Binding Processor to ACQ HAL:
 General Syntax:
 ```python
-<lab_obj>.HAL('<ACQ_obj_name>').et_data_processor(<<proc_obj>)
+<lab_obj>.HAL('<ACQ_obj_name>').set_data_processor(<<proc_obj>)
 ```
    
 Example:
