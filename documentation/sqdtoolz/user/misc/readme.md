@@ -1,3 +1,4 @@
 # Miscellaneous
    
-* [Processor Documentation](./PROCdocs.md)
+* [Processor Docs](./PROCdocs.md)
+* [Trigger Pulse Docs](./TrigPulsedocs.md)
